@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, ScrollView } from 'react-native';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
+import RestaurantCard from './RestaurantCard';
 
 const FeaturedRow = ({id, title, description}) => {
   return (
@@ -10,6 +11,18 @@ const FeaturedRow = ({id, title, description}) => {
             <ArrowRightIcon color='#00CCBB'/>
         </View>
         <Text className='text-xs text-gray-500 px-4'>{description}</Text>
+        <ScrollView
+            horizontal
+            contentContainerStyle={{
+                paddingHorizontal: 15
+            }}
+            showsHorizontalScrollIndicator={false}
+            className='pt-4'
+        >
+            {/* Restaurant Cards @TODO delete */}
+            <RestaurantCard />
+
+        </ScrollView>
     </View>
   )
 };
