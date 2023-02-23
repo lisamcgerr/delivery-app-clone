@@ -19,8 +19,19 @@ const FeaturedRow = ({id, title, description}) => {
             showsHorizontalScrollIndicator={false}
             className='pt-4'
         >
-            {/* Restaurant Cards @TODO delete */}
-            <RestaurantCard />
+            {/* Restaurant Cards @TODO replace with dynamic props */}
+            <RestaurantCard
+                id={1}
+                imgUrl='https://links.papareact.com/gn7'
+                title='Yo! Sushi'
+                rating={4.5}
+                genre='Japanese'
+                address='123 Main Street'
+                shortDescription='This is a test description'
+                dishes={[]}
+                long={20}
+                lat={0}
+            />
 
         </ScrollView>
     </View>
