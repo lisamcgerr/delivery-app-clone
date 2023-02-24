@@ -9,6 +9,7 @@ const HomeScreen = () => {
     const navigation = useNavigation();
     const [featuredCategories, setFeaturedCategories] = useState([]);
 
+    // @NOTE hiding the header
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
@@ -16,14 +17,14 @@ const HomeScreen = () => {
     }, []);
 
     // @TODO finish FETCH Sanity command 1.38
-    useEffect(() => {
-        sanityClient.fetch(`
-        `).then(data => {
-            setFeaturedCategories(data)
-        })
-    }, []);
-    // @TODO delete console log
-    console.log('featuredCategories', featuredCategories);
+    // useEffect(() => {
+    //     sanityClient.fetch(`
+    //     `).then(data => {
+    //         setFeaturedCategories(data)
+    //     })
+    // }, []);
+    // // @TODO delete console log
+    // console.log('featuredCategories', featuredCategories);
 
   return (
     <SafeAreaView className='bg-white pt-5'>
@@ -85,7 +86,6 @@ const HomeScreen = () => {
                 title='Featured'
                 description='Paid placement from our partners'
             />
-
         </ScrollView>
     </SafeAreaView>
   )

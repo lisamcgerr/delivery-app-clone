@@ -8,15 +8,15 @@ const Categories = () => {
   const [categories, setCategories] = useState([]);
 
   // @TODO finish FETCH Sanity command 1.49
-  useEffect(() => {
-    client.fetch(`
-      *[_type == 'category]
-    `).then(data => {
-      setCategories(data?.categories)
-    })
-  }, []);
-  // @TODO delete console log
-  console.log('categories', categories);
+  // useEffect(() => {
+  //   client.fetch(`
+  //     *[_type == 'category]
+  //   `).then(data => {
+  //     setCategories(data?.categories)
+  //   })
+  // }, []);
+  // // @TODO delete console log
+  // console.log('categories', categories);
 
   return (
     <ScrollView

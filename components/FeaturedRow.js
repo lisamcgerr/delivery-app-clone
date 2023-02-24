@@ -8,14 +8,14 @@ const FeaturedRow = ({id, title, description}) => {
     const [restaurants, setRestaurants] = useState([]);
 
     // @TODO finish FETCH Sanity command 1.44
-    useEffect(() => {
-        sanityClient.fetch(`
-        `).then(data => {
-            setRestaurants(data?.restaurants)
-        })
-    }, []);
-    // @TODO delete console log
-    console.log('restaurants', restaurants);
+    // useEffect(() => {
+    //     sanityClient.fetch(`
+    //     `).then(data => {
+    //         setRestaurants(data?.restaurants)
+    //     })
+    // }, []);
+    // // @TODO delete console log
+    // console.log('restaurants', restaurants);
 
   return (
     <View>
