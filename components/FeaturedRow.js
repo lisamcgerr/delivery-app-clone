@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 import { ArrowRightIcon } from 'react-native-heroicons/outline';
 import RestaurantCard from './RestaurantCard';
+import sanityClient from '../sanity';
 
 const FeaturedRow = ({id, title, description}) => {
+    const [restaurants, setRestaurants] = useState([]);
+
+    // @TODO finish FETCH Sanity command 1.44
+    useEffect(() => {
+        sanityClient.fetch(`
+        `).then(data => {
+            setRestaurants(data?.restaurants)
+        })
+    }, []);
+    // @TODO delete console log
+    console.log('restaurants', restaurants);
+
   return (
     <View>
         <View className='mt-4 flex-row items-center justify-between px-4'>
@@ -19,7 +32,23 @@ const FeaturedRow = ({id, title, description}) => {
             showsHorizontalScrollIndicator={false}
             className='pt-4'
         >
-            {/* Restaurant Cards @TODO replace with dynamic props */}
+            {/* @TODO @TODO replace with dynamic props */}
+            {/* {restaurants?.map(restaurant => (
+                <RestaurantCard
+                    key={restaurant._id}
+                    id={restaurant._id}
+                    title={restaurant.name}
+                    imgUrl={restaurant.image}
+                    rating={restaurant.rating}
+                    genre={restaurant.genre}
+                    address={restaurant.address}
+                    shortDescription={restaurant.shortDescription}
+                    dishes={restaurant.dishes}
+                    long={restaurant.long}
+                    lat={restaurant.lat}
+                />
+            ))}; */}
+            {/* Restaurant Cards @TODO delete hardcoded card below */}
             <RestaurantCard
                 id={1}
                 imgUrl='https://links.papareact.com/gn7'

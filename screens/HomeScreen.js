@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useState, useEffect } from 'react';
 import { Text, SafeAreaView, View, Image, TextInput, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { ChevronDownIcon, UserIcon, MagnifyingGlassIcon, AdjustmentsVerticalIcon } from 'react-native-heroicons/outline'
@@ -7,11 +7,24 @@ import FeaturedRow from '../components/FeaturedRow';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
+    const [featuredCategories, setFeaturedCategories] = useState([]);
+
     useLayoutEffect(() => {
         navigation.setOptions({
             headerShown: false,
         });
     }, []);
+
+    // @TODO finish FETCH Sanity command 1.38
+    useEffect(() => {
+        sanityClient.fetch(`
+        `).then(data => {
+            setFeaturedCategories(data)
+        })
+    }, []);
+    // @TODO delete console log
+    console.log('featuredCategories', featuredCategories);
+
   return (
     <SafeAreaView className='bg-white pt-5'>
         {/* Header @TODO delete */}
@@ -20,7 +33,7 @@ const HomeScreen = () => {
                 source={{uri: 'https://links.papareact.com/wru'}}
                 className='h-7 w-7 bg-gray-300 rounded-full'
             />
-            {/* @TODO image */}
+            {/* Image @TODO delete */}
             <View className='flex-1'>
                 <Text className='font-bold text-gray-400 text-xs'>
                     Deliver Now!
@@ -44,6 +57,18 @@ const HomeScreen = () => {
         <ScrollView className='bg-gray-100' contentContainerStyle={{paddingBottom: 100}}>
             {/* Categories @TODO delete */}
             <Categories />
+
+            {/* Featured Categories @TODO delete  */}
+
+            {/* {featuredCategories?.map(category => (
+                <FeaturedRow
+                    key={category._id}
+                    id={category._id}
+                    title={category.name}
+                    description={category.shortDescription}
+                />
+            ))} */}
+
             {/* Featured Rows @TODO replace with dynamic props */}
             <FeaturedRow
                 id={1}
