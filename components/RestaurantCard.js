@@ -7,7 +7,7 @@ import { urlFor } from '../sanity';
 const RestaurantCard = ({id, imgUrl, title, rating, genre, address, shortDescription, dishes, long, lat}) => {
   return (
     <TouchableOpacity className='bg-white mr-3 shadow'>
-        {/* @TODO look at urlFor Sanity */}
+        {/* TODO look at urlFor Sanity */}
         <Image
             source={{uri: urlFor(imgUrl).url()}}
             className='h-36 w-64 rounded-sm'
