@@ -16,8 +16,12 @@ const RestaurantCard = ({id, imgUrl, title, rating, genre, address, shortDescrip
             }}
             className='bg-white mr-3 shadow'>
             {/* TODO look at urlFor Sanity */}
-            <Image
+            {/* <Image
                 source={{uri: urlFor(imgUrl).url()}}
+                className='h-36 w-64 rounded-sm'
+            /> */}
+            <Image
+                source={{uri: imgUrl}}
                 className='h-36 w-64 rounded-sm'
             />
             <View className='px-3 pb-4'>

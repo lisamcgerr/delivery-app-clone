@@ -24,16 +24,20 @@ const RestaurantScreen = () => {
     return (
         <ScrollView>
             <View className='relative'>
-                <Image
+                {/* @TODO image */}
+                {/* <Image
                     source={{uri: urlFor(imgUrl).url()}}
+                    className='w-full h-56 bg-gray-300 p-4'
+                /> */}
+                <Image
+                    source={{uri: imgUrl}}
                     className='w-full h-56 bg-gray-300 p-4'
                 />
                 <TouchableOpacity
                     className='absolute top-14 left-5 p-2 bg-gray-100 rounded-full'
                     onPress={navigation.goBack}
                 >
-                    {/*  @TODO make sure works, remove below <ArrowLeftIcon size={20} color='#00CCBB' /> */}
-                    <Text>Back</Text>
+                    <ArrowLeftIcon size={20} color='#00CCBB' />
                 </TouchableOpacity>
             </View>
             <View className='bg-white' >
