@@ -33,6 +33,7 @@ const RestaurantScreen = () => {
     return (
         <>
             <BasketIcon />
+            {/* @TODO not scrolling on restaurant page with basket */}
             <ScrollView>
                 <View className='relative'>
                     {/* @TODO image */}

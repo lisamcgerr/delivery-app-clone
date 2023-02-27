@@ -10,6 +10,9 @@ const BasketIcon = () => {
     const navigation = useNavigation();
     const basketTotal = useSelector(selectBasketTotal);
 
+    // @NOTE hiding the items
+    if (items.length === 0) return null;
+
     return (
         <View className='absolute bottom-10 w-full z-50'>
             <TouchableOpacity

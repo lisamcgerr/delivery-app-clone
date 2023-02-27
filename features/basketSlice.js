@@ -15,10 +15,13 @@ export const basketSlice = createSlice({
       state.items = [...state.items, action.payload]
     },
     removeFromBasket: (state, action) => {
-      const updatedBasket = [...state.items];
-      var index = state.items.findIndex(item => item.id === action.payload.id);
-      index > -1 ? updatedBasket.splice(index, 1) : console.warn(`Cannot remove product (id: ${action.payload.id}) as it is NOT in the basket`);
-      state.items = updatedBasket;
+        console.log('STATE:', state.items);
+        const updatedBasket = [...state.items];
+        var payloaded = action.payload.id;
+        var index = state.items.findIndex((item) => item.id === action.payload.id);
+        console.log('index', index, 'payload', action.payload.id)
+        index > -1 ? updatedBasket.splice(index, 1) : console.warn(`Index number is:${index}, Cannot remove product (id: ${action.payload.id}) as it is NOT in the basket`);
+        state.items = updatedBasket;
     },
   },
 });

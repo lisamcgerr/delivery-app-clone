@@ -13,6 +13,9 @@ import { store } from './store';
 const Stack = createNativeStackNavigator();
 
 export default function App() {
+  let x = 1;
+  let y = 34;
+
   return (
     <NavigationContainer>
       <Provider store={store} >
