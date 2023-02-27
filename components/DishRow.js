@@ -3,10 +3,26 @@ import { View, Image, Text, TouchableOpacity } from 'react-native';
 import Currency from 'react-currency-formatter';
 import { urlFor } from '../sanity';
 import { MinusCircleIcon, PlusCircleIcon } from 'react-native-heroicons/solid';
+import { useDispatch, useSelector } from 'react-redux';
+import { addToBasket, removeFromBasket, selectBasketItemsWithId, selectBasketItems } from '../features/basketSlice';
 
 const DishRow = ({id, name, description, price, image}) => {
     const [isPressed, setIsPressed] = useState(false);
-    const [dishQuantity, setDishQuantity] = useState(0);
+    const dispatch = useDispatch();
+    const items = useSelector((state) => selectBasketItemsWithId(state, id));
+    const basketLength = selectBasketItems.length;
+
+    const addItemToBasket = () => {
+        dispatch(addToBasket({id, name, description, price, image}));
+    };
+
+    const removeItemFromBasket = () => {
+        if (items.length == 0) return;
+        dispatch(removeFromBasket({id}))
+    };
+
+    console.log('items: ', items); // @TODO remove
+
     return (
         <>
             <TouchableOpacity
@@ -42,14 +58,16 @@ const DishRow = ({id, name, description, price, image}) => {
                         {/* @TODO handle negative quantity */}
                         <TouchableOpacity
                             className=''
-                            onPress={() => setDishQuantity(dishQuantity - 1)}
+                            onPress={removeItemFromBasket}
                         >
-                            <MinusCircleIcon color='#00CCBB' size={40} />
+                            <MinusCircleIcon
+                                color={items.length > 0 ? '#00CCBB' : 'gray'}
+                                size={40} />
                         </TouchableOpacity>
-                        <Text className=''>{dishQuantity}</Text>
+                        <Text className=''>{items.length}</Text>
                         <TouchableOpacity
                             className=''
-                            onPress={() => setDishQuantity(dishQuantity + 1)}
+                            onPress={addItemToBasket}
                         >
                             <PlusCircleIcon color='#00CCBB' size={40} />
                         </TouchableOpacity>
