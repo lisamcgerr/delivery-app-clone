@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/HomeScreen';
 import RestaurantScreen from './screens/RestaurantScreen';
+import BasketScreen from './screens/BasketScreen';
 import CommentScreen from './screens/CommentScreen';
 import { Provider } from 'react-redux';
 import { store } from './store';
@@ -20,6 +21,11 @@ export default function App() {
             <Stack.Screen name='Home' component={HomeScreen} />
             <Stack.Screen name='Restaurant' component={RestaurantScreen} />
             <Stack.Screen name='Comment' component={CommentScreen} />
+            <Stack.Screen
+              name='Basket'
+              component={BasketScreen}
+              options={{presentation: 'modal', headerShown: false}} />
+            {/* @NOTE another way to remove Screen header */}
           </Stack.Navigator>
         </TailwindProvider>
       </Provider>

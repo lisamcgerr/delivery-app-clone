@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { selectBasketItems, selectBasketTotal } from '../features/basketSlice';
 import { useNavigation } from '@react-navigation/native';
 import Currency from 'react-currency-formatter';
@@ -13,6 +13,7 @@ const BasketIcon = () => {
     return (
         <View className='absolute bottom-10 w-full z-50'>
             <TouchableOpacity
+                onPress={() => navigation.navigate('Basket')}
                 className='bg-[#00CCBB] p-4 flex-row rounded-lg mx-5 items-center space-x-1'
             >
                 <Text

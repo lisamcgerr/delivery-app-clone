@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+// @TODO delete
 const initialItem = {id:12, name: 'Dish 12', description: 'short description', price: 11.90, image:'https://links.papareact.com/gn7'};
 
 const initialState = {

@@ -1,12 +1,16 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { View, Text, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { ArrowLeftIcon, ChevronRightIcon, MapPinIcon, StarIcon, QuestionMarkCircleIcon } from 'react-native-heroicons/outline';
 import DishRow from '../components/DishRow';
 import BasketIcon from '../components/BasketIcon';
+import { useDispatch, useSelector } from 'react-redux';
+import { setRestaurant } from '../features/restaurantSlice';
+
 
 const RestaurantScreen = () => {
     const navigation = useNavigation();
+    const dispatch = useDispatch();
 
     // @NOTE grabbing the params that were passed from RestaurantCard onPress
     const {
@@ -21,6 +25,10 @@ const RestaurantScreen = () => {
             headerShown: false,
         });
     }, []);
+
+    useEffect(() => {
+        dispatch(setRestaurant({id, imgUrl, title, rating, genre, address, shortDescription, dishes, long, lat}))
+    }, [dispatch]);
 
     return (
         <>
@@ -75,6 +83,7 @@ const RestaurantScreen = () => {
                     </TouchableOpacity>
                 </View>
                 <View className='pb-36'>
+                    {/* @TODO padding at bottom */}
                     <Text className='px-4 pt-6 mb-3 font-bold text-xl'>Menu</Text>
                     {/* Dish Rows @TODO delete */}
                     {/* {dishes?.map(dish => (
