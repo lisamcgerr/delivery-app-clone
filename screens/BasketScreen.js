@@ -3,7 +3,7 @@ import { SafeAreaView, Text, Image, ScrollView, TouchableOpacity, View } from 'r
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectRestaurant } from '../features/restaurantSlice';
-import { removeFromBasket, selectBasketItems } from '../features/basketSlice';
+import { removeFromBasket, selectBasketItems, selectBasketTotal } from '../features/basketSlice';
 import { XCircleIcon } from 'react-native-heroicons/solid';
 import Currency from 'react-currency-formatter';
 
@@ -13,6 +13,7 @@ const BasketScreen = () => {
     const items = useSelector(selectBasketItems);
     const dispatch = useDispatch();
     const [groupedItemsInBasket, setGroupedItemsInBasket] = useState([]);
+    const basketTotal = useSelector(selectBasketTotal);
 
     // @NOTE group logic for multiple items of same kind aka dish
     useMemo(() => {
@@ -81,6 +82,34 @@ const BasketScreen = () => {
                         </View>
                     ))}
                 </ScrollView>
+                <View className='p-5 bg-white mt-5 space-y-4'>
+                    <View className='flex-row justify-between'>
+                        <Text className='text-gray-400'>Subtotal</Text>
+                        <Text className='text-gray-400'>
+                            <Currency quantity={basketTotal} currency='USD' />
+                        </Text>
+                    </View>
+                    <View className='flex-row justify-between'>
+                        <Text className='text-gray-400'>Delivery Fee</Text>
+                        <Text className='text-gray-400'>
+                            {/* @TODO dynamic delivery fee */}
+                            <Currency quantity={5.99} currency='USD' />
+                        </Text>
+                    </View>
+                    <View className='flex-row justify-between'>
+                        <Text>Order Total</Text>
+                        <Text className='font-extrabold'>
+                            <Currency quantity={basketTotal + 5.99} currency='USD' />
+                        </Text>
+                    </View>
+                    {/* @TODO implement stripe for orders */}
+                    <TouchableOpacity
+                        className='rounded-lg bg-[#00CCBB] p-4'
+                        onPress={() => navigation.navigate('Preparing Order', {restaurant})}
+                    >
+                        <Text className='text-center text-white text-lg font-bold'>Place Order</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
         </SafeAreaView>
     )
