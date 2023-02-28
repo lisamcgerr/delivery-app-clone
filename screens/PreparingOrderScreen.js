@@ -1,10 +1,19 @@
 import { SafeAreaView, View, Text } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import * as Animatable from 'react-native-animatable';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import * as Progress from 'react-native-progress';
 
 const PreparingOrderScreen = () => {
+    const navigation = useNavigation();
     const { params: { restaurant }} = useRoute();
+
+    useEffect(() => {
+        setTimeout(() => {
+            navigation.navigate('Delivery');
+        }, 4000);
+    }, []);
+
     return (
         <SafeAreaView className='bg-[#00CCBB] flex-1 justify-center items-center'>
             <Animatable.Image
@@ -20,6 +29,7 @@ const PreparingOrderScreen = () => {
             >
                 Waiting for {restaurant.title} to accept your order
             </Animatable.Text>
+            <Progress.Circle size={60} indeterminate={true} color='white' />
         </SafeAreaView>
     )
 };

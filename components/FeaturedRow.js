@@ -58,8 +58,8 @@ const FeaturedRow = ({id, title, description}) => {
                 address='123 Main Street'
                 shortDescription='This is a test description'
                 dishes={[]}
-                long={20}
-                lat={0}
+                long={41.87}
+                lat={87.62}
             />
 
         </ScrollView>
